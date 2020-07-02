@@ -1,6 +1,7 @@
 package com.yogadarma.starwars.ui.film;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,14 +12,22 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.yogadarma.starwars.R;
 import com.yogadarma.starwars.model.responses.FilmsResponse;
+import com.yogadarma.starwars.model.responses.FilmsResultsItem;
+
+import java.util.ArrayList;
+import java.util.Objects;
 
 public class FilmFragment extends Fragment implements FilmContract.View {
 
     private FilmContract.Presenter mPresenter;
-    private TextView text;
+    private RecyclerView rvFilm;
+    private FilmAdapter filmAdapter;
+    ArrayList<FilmsResultsItem> listFilm = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -31,23 +40,34 @@ public class FilmFragment extends Fragment implements FilmContract.View {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        Log.d("ONVIEW", "MASUK");
+        rvFilm = view.findViewById(R.id.rv_film);
+        setupRecyclerView();
 
         mPresenter = new FilmPresenter(this);
         mPresenter.getListFilm();
 
-        text = view.findViewById(R.id.text_dashboard);
+    }
+
+    private void setupRecyclerView() {
+        rvFilm.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        filmAdapter = new FilmAdapter(getActivity(), listFilm);
+        rvFilm.setAdapter(filmAdapter);
     }
 
     @Override
     public void populateListFilm(FilmsResponse filmsResponse) {
-        Log.d("VIEW", String.valueOf(filmsResponse.getCount()));
-//        Toast.makeText(getActivity(), filmsResponse.getCount(), Toast.LENGTH_LONG).show();
-        text.setText(String.valueOf(filmsResponse.getCount()));
+        new Handler().postDelayed(() -> {
+            listFilm.addAll(filmsResponse.getResults());
+
+            FilmAdapter filmAdapter = (FilmAdapter) Objects.requireNonNull(rvFilm.getAdapter());
+            filmAdapter.notifyDataSetChanged();
+
+        }, 1500);
     }
 
     @Override
     public void listFilmFailure(String message) {
-
+        Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
     }
 }

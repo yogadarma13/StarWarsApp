@@ -17,12 +17,12 @@ public class PlanetPresenter implements PlanetContract.Presenter {
         mInteractor.requestListPlanet(new PlanetContract.PlanetRequestCallback() {
             @Override
             public void onPlanetRequestCompleted(PlanetResponse planetResponse) {
-
+                mView.populateListPlanet(planetResponse);
             }
 
             @Override
             public void onPlanetRequestFailure(String message) {
-
+                mView.listPlanetFailure(message);
             }
         });
     }

@@ -16,12 +16,12 @@ public class PeoplePresenter implements PeopleContract.Presenter {
         mInteractor.requestListPeople(new PeopleContract.PeopleRequestCallback() {
             @Override
             public void onPeopleRequestCompleted(PeopleResponse peopleResponse) {
-
+                mView.populateListPeople(peopleResponse);
             }
 
             @Override
             public void onPeopleRequestFailure(String message) {
-
+                mView.listPeopleFailure(message);
             }
         });
     }
