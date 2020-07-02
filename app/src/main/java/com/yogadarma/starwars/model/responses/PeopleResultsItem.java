@@ -3,7 +3,7 @@ package com.yogadarma.starwars.model.responses;
 import java.util.List;
 import com.google.gson.annotations.SerializedName;
 
-public class ResultsItem{
+public class PeopleResultsItem {
 
 	@SerializedName("films")
 	private List<String> films;

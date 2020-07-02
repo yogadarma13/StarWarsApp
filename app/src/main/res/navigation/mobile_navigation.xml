@@ -3,23 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/navigation_film">
 
     <fragment
-        android:id="@+id/navigation_home"
-        android:name="com.yogadarma.starwars.ui.planet.PlanetFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_planet" />
-
-    <fragment
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/navigation_film"
         android:name="com.yogadarma.starwars.ui.film.FilmFragment"
-        android:label="@string/title_dashboard"
+        android:label="@string/title_film"
         tools:layout="@layout/fragment_film" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/navigation_people"
         android:name="com.yogadarma.starwars.ui.people.PeopleFragment"
-        android:label="@string/title_notifications"
+        android:label="@string/title_people"
         tools:layout="@layout/fragment_people" />
+
+    <fragment
+        android:id="@+id/navigation_planet"
+        android:name="com.yogadarma.starwars.ui.planet.PlanetFragment"
+        android:label="@string/title_planet"
+        tools:layout="@layout/fragment_planet" />
 </navigation>

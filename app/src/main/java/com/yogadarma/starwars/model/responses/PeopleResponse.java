@@ -15,7 +15,7 @@ public class PeopleResponse{
 	private int count;
 
 	@SerializedName("results")
-	private List<ResultsItem> results;
+	private List<PeopleResultsItem> results;
 
 	public String getNext(){
 		return next;
@@ -29,7 +29,7 @@ public class PeopleResponse{
 		return count;
 	}
 
-	public List<ResultsItem> getResults(){
+	public List<PeopleResultsItem> getResults(){
 		return results;
 	}
 }
