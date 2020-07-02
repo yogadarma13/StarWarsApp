@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.facebook.shimmer.ShimmerFrameLayout;
 import com.yogadarma.starwars.R;
 import com.yogadarma.starwars.model.responses.PlanetResponse;
 import com.yogadarma.starwars.model.responses.PlanetResultsItem;
@@ -25,6 +26,7 @@ public class PlanetFragment extends Fragment implements PlanetContract.View {
     private PlanetContract.Presenter mPresenter;
     private RecyclerView rvPlanet;
     private PlanetAdapter planetAdapter;
+    private ShimmerFrameLayout shimmerFrameLayout;
     ArrayList<PlanetResultsItem> listPlanet = new ArrayList<>();
 
     @Override
@@ -37,11 +39,24 @@ public class PlanetFragment extends Fragment implements PlanetContract.View {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        shimmerFrameLayout = view.findViewById(R.id.shimmer_view_planet);
         rvPlanet = view.findViewById(R.id.rv_planet);
         setupRecyclerView();
 
         mPresenter = new PlanetPresenter(this);
         mPresenter.getListPlanet();
+
+        showShimmer();
+    }
+
+    private void showShimmer() {
+        shimmerFrameLayout.setVisibility(View.VISIBLE);
+        shimmerFrameLayout.startShimmer();
+    }
+
+    private void hideShimmer() {
+        shimmerFrameLayout.setVisibility(View.GONE);
+        shimmerFrameLayout.stopShimmer();
     }
 
     private void setupRecyclerView() {
@@ -58,11 +73,15 @@ public class PlanetFragment extends Fragment implements PlanetContract.View {
 
             PlanetAdapter planetAdapter = (PlanetAdapter) Objects.requireNonNull(rvPlanet.getAdapter());
             planetAdapter.notifyDataSetChanged();
+
+            hideShimmer();
         }, 1500);
     }
 
     @Override
     public void listPlanetFailure(String message) {
         Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
+
+        hideShimmer();
     }
 }

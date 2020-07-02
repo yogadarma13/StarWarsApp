@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.facebook.shimmer.ShimmerFrameLayout;
 import com.yogadarma.starwars.R;
 import com.yogadarma.starwars.model.responses.PeopleResponse;
 import com.yogadarma.starwars.model.responses.PeopleResultsItem;
@@ -26,6 +27,7 @@ public class PeopleFragment extends Fragment implements PeopleContract.View {
     private PeopleContract.Presenter mPresenter;
     private RecyclerView rvPeople;
     private PeopleAdapter peopleAdapter;
+    private ShimmerFrameLayout shimmerFrameLayout;
     ArrayList<PeopleResultsItem> listPeople = new ArrayList<>();
 
     @Override
@@ -39,11 +41,23 @@ public class PeopleFragment extends Fragment implements PeopleContract.View {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        shimmerFrameLayout = view.findViewById(R.id.shimmer_view_people);
         rvPeople = view.findViewById(R.id.rv_people);
         setupRecyclerView();
         mPresenter = new PeoplePresenter(this);
         mPresenter.getListPeople();
 
+        showShimmer();
+    }
+
+    private void showShimmer() {
+        shimmerFrameLayout.setVisibility(View.VISIBLE);
+        shimmerFrameLayout.startShimmer();
+    }
+
+    private void hideShimmer() {
+        shimmerFrameLayout.setVisibility(View.GONE);
+        shimmerFrameLayout.stopShimmer();
     }
 
     private void setupRecyclerView() {
@@ -61,11 +75,14 @@ public class PeopleFragment extends Fragment implements PeopleContract.View {
             PeopleAdapter peopleAdapter = (PeopleAdapter) Objects.requireNonNull(rvPeople.getAdapter());
             peopleAdapter.notifyDataSetChanged();
 
+            hideShimmer();
+
         }, 1500);
     }
 
     @Override
     public void listPeopleFailure(String message) {
         Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
+        hideShimmer();
     }
 }
