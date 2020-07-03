@@ -9,17 +9,56 @@
         android:id="@+id/navigation_film"
         android:name="com.yogadarma.starwars.ui.film.FilmFragment"
         android:label="@string/title_film"
-        tools:layout="@layout/fragment_film" />
+        tools:layout="@layout/fragment_film" >
+        <action
+            android:id="@+id/action_navigation_film_to_detailFilmActivity"
+            app:destination="@id/detailFilmActivity" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_people"
         android:name="com.yogadarma.starwars.ui.people.PeopleFragment"
         android:label="@string/title_people"
-        tools:layout="@layout/fragment_people" />
+        tools:layout="@layout/fragment_people" >
+        <action
+            android:id="@+id/action_navigation_people_to_detailPeopleActivity"
+            app:destination="@id/detailPeopleActivity" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_planet"
         android:name="com.yogadarma.starwars.ui.planet.PlanetFragment"
         android:label="@string/title_planet"
-        tools:layout="@layout/fragment_planet" />
+        tools:layout="@layout/fragment_planet" >
+        <action
+            android:id="@+id/action_navigation_planet_to_detailPlanetActivity"
+            app:destination="@id/detailPlanetActivity" />
+    </fragment>
+    <activity
+        android:id="@+id/detailFilmActivity"
+        android:name="com.yogadarma.starwars.ui.detail_film.DetailFilmActivity"
+        android:label="activity_detail_film"
+        tools:layout="@layout/activity_detail_film" >
+        <argument
+            android:name="film"
+            app:argType="com.yogadarma.starwars.model.responses.FilmsResultsItem" />
+    </activity>
+    <activity
+        android:id="@+id/detailPeopleActivity"
+        android:name="com.yogadarma.starwars.ui.detail_people.DetailPeopleActivity"
+        android:label="activity_detail_people"
+        tools:layout="@layout/activity_detail_people" >
+        <argument
+            android:name="people"
+            app:argType="com.yogadarma.starwars.model.responses.PeopleResultsItem" />
+    </activity>
+    <activity
+        android:id="@+id/detailPlanetActivity"
+        android:name="com.yogadarma.starwars.ui.detail_planet.DetailPlanetActivity"
+        android:label="activity_detail_planet"
+        tools:layout="@layout/activity_detail_planet" >
+        <argument
+            android:name="planet"
+            app:argType="com.yogadarma.starwars.model.responses.PlanetResultsItem" />
+    </activity>
 </navigation>

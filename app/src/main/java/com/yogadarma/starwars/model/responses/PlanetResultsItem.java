@@ -1,105 +1,161 @@
 package com.yogadarma.starwars.model.responses;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.List;
+
 import com.google.gson.annotations.SerializedName;
 
-public class PlanetResultsItem {
+public class PlanetResultsItem implements Parcelable {
 
-	@SerializedName("films")
-	private List<String> films;
+    @SerializedName("films")
+    private List<String> films;
 
-	@SerializedName("edited")
-	private String edited;
+    @SerializedName("edited")
+    private String edited;
 
-	@SerializedName("created")
-	private String created;
+    @SerializedName("created")
+    private String created;
 
-	@SerializedName("climate")
-	private String climate;
+    @SerializedName("climate")
+    private String climate;
 
-	@SerializedName("rotation_period")
-	private String rotationPeriod;
+    @SerializedName("rotation_period")
+    private String rotationPeriod;
 
-	@SerializedName("url")
-	private String url;
+    @SerializedName("url")
+    private String url;
 
-	@SerializedName("population")
-	private String population;
+    @SerializedName("population")
+    private String population;
 
-	@SerializedName("orbital_period")
-	private String orbitalPeriod;
+    @SerializedName("orbital_period")
+    private String orbitalPeriod;
 
-	@SerializedName("surface_water")
-	private String surfaceWater;
+    @SerializedName("surface_water")
+    private String surfaceWater;
 
-	@SerializedName("diameter")
-	private String diameter;
+    @SerializedName("diameter")
+    private String diameter;
 
-	@SerializedName("gravity")
-	private String gravity;
+    @SerializedName("gravity")
+    private String gravity;
 
-	@SerializedName("name")
-	private String name;
+    @SerializedName("name")
+    private String name;
 
-	@SerializedName("residents")
-	private List<String> residents;
+    @SerializedName("residents")
+    private List<String> residents;
 
-	@SerializedName("terrain")
-	private String terrain;
+    @SerializedName("terrain")
+    private String terrain;
 
-	public List<String> getFilms(){
-		return films;
-	}
+    protected PlanetResultsItem(Parcel in) {
+        films = in.createStringArrayList();
+        edited = in.readString();
+        created = in.readString();
+        climate = in.readString();
+        rotationPeriod = in.readString();
+        url = in.readString();
+        population = in.readString();
+        orbitalPeriod = in.readString();
+        surfaceWater = in.readString();
+        diameter = in.readString();
+        gravity = in.readString();
+        name = in.readString();
+        residents = in.createStringArrayList();
+        terrain = in.readString();
+    }
 
-	public String getEdited(){
-		return edited;
-	}
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeStringList(films);
+        dest.writeString(edited);
+        dest.writeString(created);
+        dest.writeString(climate);
+        dest.writeString(rotationPeriod);
+        dest.writeString(url);
+        dest.writeString(population);
+        dest.writeString(orbitalPeriod);
+        dest.writeString(surfaceWater);
+        dest.writeString(diameter);
+        dest.writeString(gravity);
+        dest.writeString(name);
+        dest.writeStringList(residents);
+        dest.writeString(terrain);
+    }
 
-	public String getCreated(){
-		return created;
-	}
+    @Override
+    public int describeContents() {
+        return 0;
+    }
 
-	public String getClimate(){
-		return climate;
-	}
+    public static final Creator<PlanetResultsItem> CREATOR = new Creator<PlanetResultsItem>() {
+        @Override
+        public PlanetResultsItem createFromParcel(Parcel in) {
+            return new PlanetResultsItem(in);
+        }
 
-	public String getRotationPeriod(){
-		return rotationPeriod;
-	}
+        @Override
+        public PlanetResultsItem[] newArray(int size) {
+            return new PlanetResultsItem[size];
+        }
+    };
 
-	public String getUrl(){
-		return url;
-	}
+    public List<String> getFilms() {
+        return films;
+    }
 
-	public String getPopulation(){
-		return population;
-	}
+    public String getEdited() {
+        return edited;
+    }
 
-	public String getOrbitalPeriod(){
-		return orbitalPeriod;
-	}
+    public String getCreated() {
+        return created;
+    }
 
-	public String getSurfaceWater(){
-		return surfaceWater;
-	}
+    public String getClimate() {
+        return climate;
+    }
 
-	public String getDiameter(){
-		return diameter;
-	}
+    public String getRotationPeriod() {
+        return rotationPeriod;
+    }
 
-	public String getGravity(){
-		return gravity;
-	}
+    public String getUrl() {
+        return url;
+    }
 
-	public String getName(){
-		return name;
-	}
+    public String getPopulation() {
+        return population;
+    }
 
-	public List<String> getResidents(){
-		return residents;
-	}
+    public String getOrbitalPeriod() {
+        return orbitalPeriod;
+    }
 
-	public String getTerrain(){
-		return terrain;
-	}
+    public String getSurfaceWater() {
+        return surfaceWater;
+    }
+
+    public String getDiameter() {
+        return diameter;
+    }
+
+    public String getGravity() {
+        return gravity;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public List<String> getResidents() {
+        return residents;
+    }
+
+    public String getTerrain() {
+        return terrain;
+    }
 }

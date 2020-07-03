@@ -10,6 +10,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -47,6 +48,7 @@ public class PlanetFragment extends Fragment implements PlanetContract.View {
         mPresenter.getListPlanet();
 
         showShimmer();
+        setupListener(view);
     }
 
     private void showShimmer() {
@@ -64,6 +66,17 @@ public class PlanetFragment extends Fragment implements PlanetContract.View {
 
         planetAdapter = new PlanetAdapter(getActivity(), listPlanet);
         rvPlanet.setAdapter(planetAdapter);
+    }
+
+    private void setupListener(View view) {
+
+        planetAdapter.setOnItemClickCallback(new PlanetAdapter.OnItemClickCallback() {
+            @Override
+            public void onItemClicked(PlanetResultsItem planet) {
+                PlanetFragmentDirections.ActionNavigationPlanetToDetailPlanetActivity toPlanetDetail = PlanetFragmentDirections.actionNavigationPlanetToDetailPlanetActivity(planet);
+                Navigation.findNavController(view).navigate(toPlanetDetail);
+            }
+        });
     }
 
     @Override

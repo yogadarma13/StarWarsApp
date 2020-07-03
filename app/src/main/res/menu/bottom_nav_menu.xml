@@ -9,7 +9,7 @@
     <item
         android:id="@+id/navigation_people"
         android:icon="@drawable/ic_pemeran"
-        android:title="Pemeran" />
+        android:title="People" />
 
     <item
         android:id="@+id/navigation_planet"

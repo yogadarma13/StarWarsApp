@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public abstract class BaseAdapter extends RecyclerView.Adapter<BaseAdapter.ViewHolder> {
-    public  int layoutId;
+    public int layoutId;
     protected ArrayList<?> list = new ArrayList<>();
     Context context;
     public View itemview;
@@ -34,7 +34,7 @@ public abstract class BaseAdapter extends RecyclerView.Adapter<BaseAdapter.ViewH
 
     @Override
     public int getItemCount() {
-        return list.size();
+        return list == null ? 0: list.size();
     }
 
     public abstract void onBindView(int position, Object itemView);

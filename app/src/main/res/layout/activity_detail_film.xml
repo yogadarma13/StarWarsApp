@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.detail_film.DetailFilmActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <FrameLayout
+            android:id="@+id/toolbar_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                app:titleTextColor="@android:color/white"
+                tools:targetApi="lollipop">
+
+            </androidx.appcompat.widget.Toolbar>
+
+        </FrameLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/app_bar">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:padding="16dp"
+            >
+
+            <TextView
+                android:id="@+id/tv_film_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/label_title"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/label_episode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/label_episode"
+                android:textSize="16sp"
+                android:textColor="@android:color/darker_gray"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_film_title" />
+
+            <TextView
+                android:id="@+id/label_director"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_director"
+                android:layout_marginTop="16dp"
+                android:textSize="16sp"
+                android:textColor="@android:color/darker_gray"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_film_episode" />
+
+            <TextView
+                android:id="@+id/label_producer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_producer"
+                android:layout_marginTop="16dp"
+                android:textSize="16sp"
+                android:textColor="@android:color/darker_gray"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_film_director" />
+
+            <TextView
+                android:id="@+id/label_release"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_release_date"
+                android:textSize="16sp"
+                android:layout_marginTop="16dp"
+                android:textColor="@android:color/darker_gray"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_film_producer" />
+
+            <TextView
+                android:id="@+id/label_opening"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_opening"
+                android:layout_marginTop="16dp"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_film_release" />
+
+            <androidx.constraintlayout.widget.Barrier
+                android:id="@+id/barrier"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:barrierDirection="right"
+                app:constraint_referenced_ids="label_opening,label_producer,label_director,label_release,label_episode"
+                tools:layout_editor_absoluteX="395dp"
+                tools:layout_editor_absoluteY="16dp" />
+
+            <TextView
+                android:id="@+id/tv_film_episode"
+                android:layout_width="0dp"
+                android:layout_marginStart="16dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:textSize="16sp"
+                app:layout_constraintStart_toEndOf="@+id/barrier"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_film_title"
+                tools:text="Hallo" />
+
+            <TextView
+                android:id="@+id/tv_film_director"
+                android:layout_width="0dp"
+                android:layout_marginStart="16dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:textSize="16sp"
+                app:layout_constraintStart_toEndOf="@+id/barrier"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_film_episode"
+                tools:text="Hallo" />
+
+            <TextView
+                android:id="@+id/tv_film_producer"
+                android:layout_width="0dp"
+                android:layout_marginStart="16dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:textSize="16sp"
+                app:layout_constraintStart_toEndOf="@+id/barrier"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_film_director"
+                tools:text="Hallo" />
+
+            <TextView
+                android:id="@+id/tv_film_release"
+                android:layout_width="0dp"
+                android:layout_marginStart="16dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:textSize="16sp"
+                app:layout_constraintStart_toEndOf="@+id/barrier"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_film_producer"
+                tools:text="Hallo" />
+
+            <TextView
+                android:id="@+id/tv_film_opening"
+                android:layout_width="0dp"
+                android:layout_marginStart="16dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:textSize="16sp"
+                app:layout_constraintStart_toEndOf="@+id/barrier"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_film_release"
+                tools:text="Hallo" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

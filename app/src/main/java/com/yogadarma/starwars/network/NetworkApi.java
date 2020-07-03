@@ -18,4 +18,5 @@ public interface NetworkApi {
 
     @GET("people")
     Observable<PeopleResponse> getListPeople();
+
 }

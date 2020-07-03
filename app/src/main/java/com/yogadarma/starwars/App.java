@@ -11,7 +11,7 @@ public class App extends Application {
     private static Context context = null;
 
     @Override
-    public void onCreate(){
+    public void onCreate() {
         super.onCreate();
 
         context = getApplicationContext();
@@ -20,7 +20,7 @@ public class App extends Application {
         });
     }
 
-    public static Context getAppContext(){
+    public static Context getAppContext() {
         return context;
     }
 }

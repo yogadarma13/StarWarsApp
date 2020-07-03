@@ -1,6 +1,5 @@
 package com.yogadarma.starwars.ui.planet;
 
-
 import com.yogadarma.starwars.model.responses.PlanetResponse;
 
 public interface PlanetContract {

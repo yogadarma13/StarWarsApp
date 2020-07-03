@@ -1,7 +1,5 @@
 package com.yogadarma.starwars.ui.film;
 
-import android.util.Log;
-
 import com.yogadarma.starwars.model.responses.FilmsResponse;
 import com.yogadarma.starwars.network.NetworkApi;
 import com.yogadarma.starwars.network.UtilsApi;
@@ -38,7 +36,6 @@ public class FilmInteractor implements FilmContract.Interactor {
             @Override
             public void onComplete() {
                 if (response != null) {
-                    Log.d("INTER", String.valueOf(response.getCount()));
                     filmRequestCallback.onFilmRequestCompleted(response);
                 } else {
                     filmRequestCallback.onFilmRequestFailure("Data tidak ditemukan");

@@ -1,19 +1,16 @@
 package com.yogadarma.starwars.ui.film;
 
-import android.animation.ValueAnimator;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -52,6 +49,8 @@ public class FilmFragment extends Fragment implements FilmContract.View {
         mPresenter.getListFilm();
 
         showShimmer();
+        setupListener(view);
+
     }
 
     private void showShimmer() {
@@ -69,6 +68,13 @@ public class FilmFragment extends Fragment implements FilmContract.View {
 
         filmAdapter = new FilmAdapter(getActivity(), listFilm);
         rvFilm.setAdapter(filmAdapter);
+    }
+
+    private void setupListener(View view) {
+        filmAdapter.setOnItemClickCallback(film -> {
+            FilmFragmentDirections.ActionNavigationFilmToDetailFilmActivity toDetailFilm = FilmFragmentDirections.actionNavigationFilmToDetailFilmActivity(film);
+            Navigation.findNavController(view).navigate(toDetailFilm);
+        });
     }
 
     @Override

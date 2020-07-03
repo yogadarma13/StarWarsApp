@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.detail_people.DetailPeopleActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <FrameLayout
+            android:id="@+id/toolbar_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                app:titleTextColor="@android:color/white"
+                tools:targetApi="lollipop">
+
+            </androidx.appcompat.widget.Toolbar>
+
+        </FrameLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:padding="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/app_bar">
+
+        <TextView
+            android:id="@+id/tv_people_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            tools:text="Name"
+            android:textStyle="bold"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/label_height"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/label_height"
+            android:textSize="16sp"
+            android:textColor="@android:color/darker_gray"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_people_name" />
+
+        <TextView
+            android:id="@+id/label_mass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/label_mass"
+            android:layout_marginTop="16dp"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_people_height" />
+
+        <TextView
+            android:id="@+id/label_hair_color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/darker_gray"
+            android:text="@string/label_hair_color"
+            android:layout_marginTop="16dp"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_people_mass" />
+
+        <TextView
+            android:id="@+id/label_skin_color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/label_skin_color"
+            android:textSize="16sp"
+            android:textColor="@android:color/darker_gray"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_people_hair_color" />
+
+        <TextView
+            android:id="@+id/label_eye_color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/label_eye_color"
+            android:textColor="@android:color/darker_gray"
+            android:layout_marginTop="16dp"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_people_skin_color" />
+
+        <TextView
+            android:id="@+id/label_gender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/label_gender"
+            android:layout_marginTop="16dp"
+            android:textSize="16sp"
+            android:textColor="@android:color/darker_gray"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_people_eye_color" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrier"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="right"
+            app:constraint_referenced_ids="label_gender,label_eye_color,label_hair_color,label_mass,label_skin_color,label_height"
+            tools:layout_editor_absoluteX="395dp"
+            tools:layout_editor_absoluteY="16dp" />
+
+        <TextView
+            android:id="@+id/tv_people_height"
+            android:layout_width="0dp"
+            android:layout_marginStart="16dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@+id/barrier"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_people_name"
+            tools:text="Hallo" />
+
+        <TextView
+            android:id="@+id/tv_people_mass"
+            android:layout_width="0dp"
+            android:layout_marginStart="16dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@+id/barrier"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_people_height"
+            tools:text="Hallo" />
+
+        <TextView
+            android:id="@+id/tv_people_hair_color"
+            android:layout_width="0dp"
+            android:layout_marginStart="16dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@+id/barrier"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_people_mass"
+            tools:text="Hallo" />
+
+        <TextView
+            android:id="@+id/tv_people_skin_color"
+            android:layout_width="0dp"
+            android:layout_marginStart="16dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@+id/barrier"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_people_hair_color"
+            tools:text="Hallo" />
+
+        <TextView
+            android:id="@+id/tv_people_eye_color"
+            android:layout_width="0dp"
+            android:layout_marginStart="16dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@+id/barrier"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_people_skin_color"
+            tools:text="Hallo" />
+
+        <TextView
+            android:id="@+id/tv_people_gender"
+            android:layout_width="0dp"
+            android:layout_marginStart="16dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@+id/barrier"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_people_eye_color"
+            tools:text="Hallo" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

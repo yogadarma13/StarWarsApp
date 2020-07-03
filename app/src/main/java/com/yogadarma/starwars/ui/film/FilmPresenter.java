@@ -1,7 +1,5 @@
 package com.yogadarma.starwars.ui.film;
 
-import android.util.Log;
-
 import com.yogadarma.starwars.model.responses.FilmsResponse;
 
 public class FilmPresenter implements FilmContract.Presenter {
@@ -19,7 +17,6 @@ public class FilmPresenter implements FilmContract.Presenter {
         mInteractor.requestListFilm(new FilmContract.FilmRequestCallback() {
             @Override
             public void onFilmRequestCompleted(FilmsResponse filmsResponse) {
-                Log.d("PRESENTER", String.valueOf(filmsResponse.getCount()));
                 mView.populateListFilm(filmsResponse);
             }
 

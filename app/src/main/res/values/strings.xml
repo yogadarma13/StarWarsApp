@@ -2,6 +2,25 @@
     <string name="app_name">StarWars</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="title_film">Film StarWars</string>
-    <string name="title_people">Pemeran StarWars</string>
+    <string name="title_people">People StarWars</string>
     <string name="title_planet">Planet StarWars</string>
+    <string name="label_title">Title</string>
+    <string name="label_episode">Episode</string>
+    <string name="label_director">Director</string>
+    <string name="label_producer">Producer</string>
+    <string name="label_release_date">Release date</string>
+    <string name="label_opening">Opening</string>
+    <string name="label_height">Height</string>
+    <string name="label_mass">Mass</string>
+    <string name="label_hair_color">Hair color</string>
+    <string name="label_skin_color">Skin color</string>
+    <string name="label_eye_color">Eye color</string>
+    <string name="label_gender">Gender</string>
+    <string name="label_rotation_period">Rotation Period</string>
+    <string name="label_orbital_period">Orbital Period</string>
+    <string name="label_diameter">Diameter</string>
+    <string name="label_climate">Climate</string>
+    <string name="label_gravity">Gravity</string>
+    <string name="label_terrain">Terrain</string>
+    <string name="label_population">Population</string>
 </resources>

@@ -11,6 +11,7 @@ public class PeoplePresenter implements PeopleContract.Presenter {
         mView = view;
         mInteractor = new PeopleInteractor();
     }
+
     @Override
     public void getListPeople() {
         mInteractor.requestListPeople(new PeopleContract.PeopleRequestCallback() {

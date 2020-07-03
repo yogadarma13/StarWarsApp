@@ -10,6 +10,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -17,7 +18,6 @@ import com.facebook.shimmer.ShimmerFrameLayout;
 import com.yogadarma.starwars.R;
 import com.yogadarma.starwars.model.responses.PeopleResponse;
 import com.yogadarma.starwars.model.responses.PeopleResultsItem;
-import com.yogadarma.starwars.ui.film.FilmAdapter;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -44,10 +44,12 @@ public class PeopleFragment extends Fragment implements PeopleContract.View {
         shimmerFrameLayout = view.findViewById(R.id.shimmer_view_people);
         rvPeople = view.findViewById(R.id.rv_people);
         setupRecyclerView();
+
         mPresenter = new PeoplePresenter(this);
         mPresenter.getListPeople();
 
         showShimmer();
+        setupListener(view);
     }
 
     private void showShimmer() {
@@ -65,6 +67,16 @@ public class PeopleFragment extends Fragment implements PeopleContract.View {
 
         peopleAdapter = new PeopleAdapter(getActivity(), listPeople);
         rvPeople.setAdapter(peopleAdapter);
+    }
+
+    private void setupListener(View view) {
+        peopleAdapter.setOnItemClickCallback(new PeopleAdapter.OnItemClickCallback() {
+            @Override
+            public void onItemClicked(PeopleResultsItem people) {
+                PeopleFragmentDirections.ActionNavigationPeopleToDetailPeopleActivity toDetailPeople = PeopleFragmentDirections.actionNavigationPeopleToDetailPeopleActivity(people);
+                Navigation.findNavController(view).navigate(toDetailPeople);
+            }
+        });
     }
 
     @Override
